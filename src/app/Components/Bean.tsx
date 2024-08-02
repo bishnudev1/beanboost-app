@@ -2,8 +2,16 @@
 
 import { useState } from 'react';
 import Script from 'next/script';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';  // Import useRouter from next/navigation for use with app directory
+import Head from 'next/head';
+import Donor from './Donor';
+import Contact from './Contact';
 
 export default function Bean() {
+  const { user } = useUser();
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const amount = '400';
   const currency = 'INR';
@@ -33,8 +41,8 @@ export default function Bean() {
 
   const processPayment = async () => {
     try {
-      const orderId: string = await createOrderId();
-      const options: RazorpayOptions = {
+      const orderId = await createOrderId();
+      const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
         amount: parseFloat(amount) * 100,
         currency: currency,
@@ -65,7 +73,7 @@ export default function Bean() {
         },
       };
       const paymentObject = new window.Razorpay(options);
-      paymentObject.on('payment.failed', function (response: any) {
+      paymentObject.on('payment.failed', function (response) {
         alert(response.error.description);
       });
       paymentObject.open();
@@ -75,13 +83,20 @@ export default function Bean() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen py-8 px-4">
+    <div className="bg-black text-white min-h-screen py-6 px-4">
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"
+        //  crossOrigin="true" 
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+      </Head>
       <Script
         id="razorpay-checkout-js"
         src="https://checkout.razorpay.com/v1/checkout.js"
       />
       <div className="container mx-auto">
-        <h1 className="text-3xl font-bold mb-4 text-center">Boost My Brew 🫘</h1>
+        <h1 className="text-3xl font-bold mb-4 text-center font-lobster">Boost My Brew 🫘</h1>
 
         <div className="flex justify-center mb-4">
           <img
@@ -93,18 +108,26 @@ export default function Bean() {
           />
         </div>
 
-        <p className="text-lg text-center mb-8">
+        <p className="text-lg text-center mb-8 font-roboto">
           If you like my works then consider buying me some coffee beans 😊
         </p>
 
         <div className="flex justify-center">
           <button
-            onClick={processPayment}
-            className="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded"
+            onClick={() => {
+              if (user) {
+                processPayment();
+              } else {
+                router.push('/login');
+              }
+            }}
+            className="bg-gray-600 hover:bg-black text-white py-2 px-4 rounded font-lobster"
           >
-            Buy One Coffee Box
+            Buy Me a Coffee Box
           </button>
         </div>
+        <Donor />
+        <Contact />
       </div>
     </div>
   );
