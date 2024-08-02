@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Beanboost
 
-## Getting Started
+<div align="center">
+  <img src="./beanboost.png" alt="Beanboost Logo" style="width: 50%;">
+</div>
 
-First, run the development server:
+## 🚀 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Beanboost is a self-patron app built with Next.js and TypeScript, designed to support creators through direct contributions. The app utilizes Clerk for authentication and showcases a sleek, modern UI with Next.js. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: [Next.js](https://nextjs.org/) - A powerful React framework for building fast, scalable web applications.
+- **Language**: [TypeScript](https://www.typescriptlang.org/) - A statically typed superset of JavaScript that provides type safety and enhances code quality.
+- **Authentication**: [Clerk](https://clerk.dev/) - A modern authentication solution for managing user identities and security.
+- **Backend as a Service**: [Appwrite](https://appwrite.io/) - An open-source backend server that simplifies the development of web and mobile applications.
+- **Payment Gateway**: [Razorpay](http://razorpay.com/) - A commercial payment gateway providers which provides API's for making securable payments across internet.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🚀 Getting Started
 
-## Learn More
+To get started with Beanboost, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the Repository**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   git clone https://github.com/your-username/beanboost.git
+   cd beanboost
+   ```
+2. **Installing required dependencies**:
+   ```bash
+    npm install
+   ```
+3. **Run the development server**:
+   ```bash
+    npm run dev
+   ```
+  - Open http://localhost:3000 in your browser to see the app in action.
+    
+4. **🤝 Contribution**:
+  - Beanboost is an open-source project and we welcome contributions from the community. If you would like to contribute, please check out the      contributing guidelines and submit a pull request.
