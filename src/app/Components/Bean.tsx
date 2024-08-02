@@ -8,6 +8,8 @@ import Head from 'next/head';
 import Donor from './Donor';
 import Contact from './Contact';
 import client, { databases } from '@/app/db/appwrite';
+import toast from 'react-hot-toast';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Bean() {
   const { user } = useUser();
@@ -30,18 +32,22 @@ export default function Bean() {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        return toast.error('Network error. Please try again later');
       }
 
       const data = await response.json();
       return data.orderId;
     } catch (error) {
-      console.error('There was a problem with your fetch operation:', error);
+      return toast.error('An error occurred. Please try again later');
     }
   };
 
   const processPayment = async () => {
+    if(loading){
+      return;
+    }
     try {
+      setLoading(true);
       const orderId = await createOrderId();
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
@@ -80,13 +86,14 @@ export default function Bean() {
                 date: new Date().toLocaleString(),
               }
             ).then(() => {
-              alert('Payment succeeded');
+              toast.success('Payment has succeeded. Thank you for your support!');
+              window.location.reload();
             }).catch((error:any) => {
-              alert(error.message);
+              toast.error('An error occurred. Please try again later');
             });
           }
           else {
-            alert(res.message);
+            toast.error(res.message);
           }
         },
         theme: {
@@ -95,11 +102,14 @@ export default function Bean() {
       };
       const paymentObject = new window.Razorpay(options);
       paymentObject.on('payment.failed', function (response) {
-        alert(response.error.description);
+        toast.error(response.error.description);
       });
       paymentObject.open();
     } catch (error) {
-      console.log(error);
+      toast.error('An error occurred. Please try again later');
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -144,7 +154,9 @@ export default function Bean() {
             }}
             className="bg-gray-600 hover:bg-black text-white py-2 px-4 rounded font-lobster"
           >
-            Buy Me a Coffee Box
+            {
+              loading ?  <CircularProgress color="inherit" size={15} /> : `Buy Me a Bean Box`
+            }
           </button>
         </div>
         <Donor />

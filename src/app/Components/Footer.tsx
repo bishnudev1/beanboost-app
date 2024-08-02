@@ -14,7 +14,7 @@ export default function Footer() {
           <p className="text-lg font-roboto">
            Copyrighted by &copy;Beanboost {new Date().getFullYear()}
           </p>
-          <p className="text-sm font-roboto">Developed by Bishnudev Khutia</p>
+          {/* <p className="text-sm font-roboto">Developed by Bishnudev Khutia</p> */}
         </div>
       </footer>
     );
