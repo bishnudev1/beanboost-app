@@ -129,7 +129,7 @@ export default function Bean() {
       <div className="container mx-auto">
         {/* <h1 className="text-3xl font-bold mb-4 text-center font-lobster">Boost My Brew 🫘</h1> */}
         <h1 className="text-4xl font-bold mb-4 text-center font-lobster animate-bounce">
-          Reach Out to Me
+        Boost My Brew 🫘
         </h1>
 
         <div className="flex justify-center mb-4">
