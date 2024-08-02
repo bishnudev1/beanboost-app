@@ -1,6 +1,6 @@
 "use client";
-import client from "@/db/appwrite";
-import { databases } from "@/db/appwrite";
+import client from "@/app/db/appwrite";
+import { databases } from "@/app/db/appwrite";
 import { get } from "http";
 import { useEffect,useState } from "react";
 
@@ -54,10 +54,10 @@ export default function Donor() {
                   🔥
                 </span>
                 <div>
-                  <p className="text-lg font-semibold">{donor.name}</p>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm font-roboto">{donor.name} has donated {donor.amount} on {donor.date}</p>
+                  {/* <p className="text-sm text-gray-400">
                     {donor.amount} on {donor.date}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             ))}

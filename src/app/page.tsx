@@ -1,7 +1,7 @@
 import Bean from "./components/Bean";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import client from "@/db/appwrite";
+import client from "@/app/db/appwrite";
 
 export default function Home() {
   if (client === null) {

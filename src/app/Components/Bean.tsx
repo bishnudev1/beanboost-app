@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';  // Import useRouter from next/navi
 import Head from 'next/head';
 import Donor from './Donor';
 import Contact from './Contact';
+import client, { databases } from '@/app/db/appwrite';
 
 export default function Bean() {
   const { user } = useUser();
@@ -63,7 +64,27 @@ export default function Bean() {
             headers: { 'Content-Type': 'application/json' },
           });
           const res = await result.json();
-          if (res.isOk) alert('Payment succeeded');
+          if (res.isOk){
+            // alert('Payment succeeded');
+            // store the transaction details in the database
+            const id = Math.random().toString(36).substring(7);
+            console.log('User:', user?.firstName);
+            await databases.createDocument(
+              process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!,
+              process.env.NEXT_PUBLIC_APPWRITE_DONATORS_COLLECTIONS_ID!,
+              id,
+              {
+                id: id, 
+                name: user!?.firstName,
+                amount: Number(amount),
+                date: new Date().toLocaleString(),
+              }
+            ).then(() => {
+              alert('Payment succeeded');
+            }).catch((error:any) => {
+              alert(error.message);
+            });
+          }
           else {
             alert(res.message);
           }

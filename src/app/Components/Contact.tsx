@@ -1,4 +1,4 @@
-import client, {databases} from "@/db/appwrite";
+import client, {databases} from "@/app/db/appwrite";
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
