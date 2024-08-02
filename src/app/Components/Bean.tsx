@@ -5,8 +5,8 @@ import Script from 'next/script';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';  // Import useRouter from next/navigation for use with app directory
 import Head from 'next/head';
-import Donor from './Donor';
-import Contact from './Contact';
+import Donor from './Donor.tsx';
+import Contact from './Contact.tsx';
 import client, { databases } from '@/app/db/appwrite';
 import toast from 'react-hot-toast';
 import CircularProgress from '@mui/material/CircularProgress';

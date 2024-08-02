@@ -4,9 +4,9 @@ import { Toaster } from "react-hot-toast";
 import CircularProgress from '@mui/material/CircularProgress';
 
 // Lazy load components
-const Bean = lazy(() => import("./components/Bean"));
-const Footer = lazy(() => import("./components/Footer"));
-const Navbar = lazy(() => import("./components/Navbar"));
+const Bean = lazy(() => import("./components/Bean.tsx"));
+const Footer = lazy(() => import("./components/Footer.tsx"));
+const Navbar = lazy(() => import("./components/Navbar.tsx"));
 
 export default function Home() {
   if (client === null) {
