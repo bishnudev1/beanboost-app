@@ -30,7 +30,20 @@ To get started with Beanboost, follow these steps:
    ```bash
     npm install
    ```
-3. **Run the development server**:
+3. **Setting up environment variables**:
+   - Create a file named .env.local in root directory
+   - Paste your own key with below format
+   - ```bash
+     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your-key"
+     CLERK_SECRET_KEY="your-key"
+     NEXT_PUBLIC_RAZORPAY_KEY_ID="your-key"
+     NEXT_PUBLIC_RAZORPAY_KEY_SECRET="your-key"
+     NEXT_PUBLIC_APPWRITE_PROJECT_ID="your-key"
+     NEXT_PUBLIC_APPWRITE_DATABASE_ID="your-key"
+     NEXT_PUBLIC_APPWRITE_DONATORS_COLLECTIONS_ID="your-key"
+     NEXT_PUBLIC_APPWRITE_CONTACTS_COLLECTIONS_ID="your-key"
+     ```
+5. **Run the development server**:
    ```bash
     npm run dev
    ```
